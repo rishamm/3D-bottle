@@ -15,11 +15,11 @@ export default function App() {
 
   return (
     <div className="w-full" style={{ width: "100%" }}>
-      {isLoaded ? (
+      {/* {isLoaded ? (
         <Spline scene="https://prod.spline.design/dxHvoztIFiobRBsO/scene.splinecode" />
       ) : (
         <div>Loading 3D scene...</div> // Show loading message
-      )}
+      )} */}
     </div>
   );
 }
