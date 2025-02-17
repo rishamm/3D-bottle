@@ -3,10 +3,12 @@ export default function App() {
   
 
   return (
-    <div className="w-full" style={{ width: "100%" }}>
-
-        <Spline scene="https://prod.spline.design/N6-6tBejIp7rn6pw/scene.splinecode" />
-     
-    </div>
+    <main>
+      <Spline
+        scene="https://prod.spline.design/p4jYwZfhIsFf15sH/scene.splinecode" 
+        width={1200}
+        height={1200}
+      />
+    </main>
   );
 }
