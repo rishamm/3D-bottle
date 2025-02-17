@@ -27,7 +27,7 @@ export default function ResponsiveSpline() {
   return (
     <div className="spline-container">
       <Spline
-        scene="https://prod.spline.design/dxHvoztIFiobRBsO/scene.splinecode"
+        scene="https://prod.spline.design/p4jYwZfhIsFf15sH/scene.splinecode"
         onLoad={(scene) => setSplineScene(scene)}
       />
     </div>
