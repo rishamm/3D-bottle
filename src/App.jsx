@@ -1,33 +1,35 @@
-import Spline from '@splinetool/react-spline';
-import { useEffect, useRef } from 'react';
+import Spline from "@splinetool/react-spline";
+import { useEffect, useState } from "react";
 
 export default function ResponsiveSpline() {
-  const splineRef = useRef(null);
+  const [splineScene, setSplineScene] = useState(null);
 
   useEffect(() => {
-    const adjustCameraZoom = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+    if (!splineScene) return;
 
-      // Adjust the camera zoom level for mobile vs desktop
+    const adjustCameraZoom = () => {
+      if (!splineScene) return;
+      const width = window.innerWidth;
+
       if (width <= 768) {
-        // Reduce the zoom effect on smaller screens
-        splineRef.current.scene.setCamera({ fov: 70 });
+        splineScene.setZoom(0.8); // Adjust zoom for mobile
       } else {
-        // Keep the default for larger screens
-        splineRef.current.scene.setCamera({ fov: 50 });
+        splineScene.setZoom(1); // Normal zoom for desktop
       }
     };
 
-    window.addEventListener('resize', adjustCameraZoom);
-    adjustCameraZoom(); // Initial call
+    window.addEventListener("resize", adjustCameraZoom);
+    adjustCameraZoom();
 
-    return () => window.removeEventListener('resize', adjustCameraZoom);
-  }, []);
+    return () => window.removeEventListener("resize", adjustCameraZoom);
+  }, [splineScene]);
 
   return (
     <div className="spline-container">
-      <Spline ref={splineRef} scene="https://prod.spline.design/dxHvoztIFiobRBsO/scene.splinecode" />
+      <Spline
+        scene="https://prod.spline.design/dxHvoztIFiobRBsO/scene.splinecode"
+        onLoad={(scene) => setSplineScene(scene)}
+      />
     </div>
   );
 }
